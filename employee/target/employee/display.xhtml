@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<title>Employee Data </title>
+</h:head>
+<h:body>
+	<link href="css/vt.css" rel="stylesheet" media="screen" />
+	<h:form>
+	<h2>Employee data :</h2>
+	<br></br>
+	<br></br>
+	
+	<table>
+			<tr>
+				<td><b>Employee Id :   </b></td>
+				<td>
+					<p:inputText label="Employee Id"
+					id="fid" value="#{employeeBean.employeeId}"
+					required="true"/>
+					<p:message for="fid" />
+				</td>
+			</tr>
+			<tr>
+				<td><b>Employee Name :   </b></td>
+				<td>
+					<p:inputText label="Employee Name"
+					id="fname" value="#{employeeBean.name}"
+					required="false"/>
+					<p:message for="fname" />
+				</td>
+			</tr>
+			<tr>
+				<td><b>Employee Designation :   </b></td>
+				<td>
+					<p:inputText label="Employee Designation"
+					id="fdesg" value="#{employeeBean.designation}"
+					required="false"/>
+					<p:message for="fdesg" />
+				</td>
+			</tr>
+			<tr>
+				<td><b>Employee Salary :   </b></td>
+				<td>
+					<p:inputText label="Employee Salary"
+					id="fsal" value="#{employeeBean.salary}"
+					required="true"/>
+					<p:message for="fsal" />
+				</td>
+			</tr>			
+	</table>
+	<br></br>
+	<br></br>
+	<p><h:messages /></p>
+	<br></br>
+	<br></br>
+	<h:commandButton value= "get" action="#{employeeBean.getEmployeedone}"></h:commandButton>
+	<h:commandButton value= "delete" action="#{employeeBean.deleteEmployeedata}" onclick="dlg2.show()"></h:commandButton>
+	<h:commandButton value= "update" action="#{employeeBean.updateEmployeedone}"></h:commandButton>
+	<h:panelGrid columns="2" cellpadding="5">  
+    <p:commandButton id="getEmployee" value="Get Employee" onclick="dlg1.show();" type="button" />    
+    <p:commandButton value="Add Employee" action="confirm"/>
+    <br></br>
+    <br></br>
+    <h:commandButton id="abc123" value="Print" actionListener="#{employeeBean.printHello}"/>
+    </h:panelGrid> 
+	 <br></br>
+	 <p:dialog id="getEmployeedialog" header="Enter Employee Id" widgetVar="dlg1">  
+    <b><h:outputText value="Employee Id :" /></b> 
+    <p:inputText id="input"/> 
+    <br></br> 
+    <br></br>
+   <p:commandButton id="showEmployeeDialog" value="Show Employee" action="#{employeeBean.getEmployeedone}"  /> 
+</p:dialog> 
+ <p:dialog id="showEmployeedialog" header="Employee Record :" widgetVar="dlg2">  
+    <b><h:outputText value="Employee Deleted " /></b> 
+    <br></br> 
+    <br></br>
+</p:dialog>
+	</h:form>
+</h:body>
+</html>
